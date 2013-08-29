@@ -1,4 +1,4 @@
 volrenderer
 ===========
+ GPU-Volume-Raycaster based on GLSL
 
-A GPU-Volume-Raycaster base on GLSL

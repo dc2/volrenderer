@@ -20,7 +20,6 @@
 #include "Formats/DicomLoader.h"
 #endif
 
-
 using namespace std;
 
 template<char... digits>

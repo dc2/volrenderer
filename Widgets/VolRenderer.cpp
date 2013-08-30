@@ -194,10 +194,12 @@ void VolRenderer::initializeGL()
     qDebug("OpenGL %d.%d", format().minorVersion(), format().majorVersion());
     
     if (!loadShader(raycastShader, "./data/shader/raycast.vert", "./data/shader/raycast.frag")) {
+        QCoreApplication::exit();
         return;
     }
     
     if (!loadShader(directionShader, "./data/shader/directions.vert", "./data/shader/directions.frag")) {
+        QCoreApplication::exit();
         return;
     }
 

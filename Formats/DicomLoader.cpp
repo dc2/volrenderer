@@ -8,7 +8,7 @@ DicomLoader::DicomLoader()
 {
 }
 
-uint32_t *DicomLoader::loadFile(const QString &filename)
+uint8_t *DicomLoader::loadFile(const QString &filename)
 {
     using namespace puntoexe;
     
@@ -84,8 +84,10 @@ uint32_t *DicomLoader::loadFile(const QString &filename)
         exceptionsManager::getMessage();
     }
     
-    uint32_t *result = new uint32_t[width*height*depth];
+    uint8_t *result = new uint8_t[width*height*depth];
     int planeSize = width*height;
+    
+    bitDepth = 8;
     
     ptr<image> finalImage(new image);
     finalImage->create(width, height, image::depthU8, L"MONOCHROME2", 8);

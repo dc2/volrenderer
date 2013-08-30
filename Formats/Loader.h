@@ -34,7 +34,7 @@ protected:
     inline unsigned scaleHistogram(unsigned val, unsigned min, unsigned max, unsigned rangeMax);
     void normalizeData(int voxelCount, ByteOrder byteOrder, unsigned dstBytesPerVal, uint8_t *data, uint8_t *dst);
     
-    unsigned width, height, depth=0;
+    unsigned width=0, height=0, depth=0;
     
     bool linearize = true;
     unsigned bitDepth;

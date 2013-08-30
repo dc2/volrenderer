@@ -262,15 +262,6 @@ void MainWindow::toggleFullscreen()
 
 void MainWindow::init()
 {
-    RawLoader *loader = new RawLoader();
-    uint8_t *volData = loader->loadFile("data/scans/CTHead.raw", 256, 256, 113, RawLoader::BO_BIG_ENDIAN, 16);
-    
-    unsigned width, height, depth, bystesPerVal;
-    loader->getDimensions(width, height, depth, bystesPerVal);
-    
-    glw->updateVolume(width, height, depth, bystesPerVal*8, volData);
-    glw->updateGL();
-    
     fpsTimer->start();
     
     ui->lut->resetLut();
@@ -332,38 +323,3 @@ void MainWindow::on_loadFileButton_clicked()
     
     centralWidget()->setDisabled(false);
 }
-
-/*void MainWindow::on_pushButton_2_clicked()
-{
-    glw->play();
-    fpsTimer->stop();
-    fps.clear();
-    
-    fpsTimer->start();
-}
-
-void MainWindow::on_pushButton_3_clicked()
-{
-    glw->pause();
-    
-    for(int i=0; i<10; ++i) {
-        fps.removeFirst();
-    }
-    
-    double min = 1000, sum = 0, max = 0;
-    
-    qSort(fps);
-    
-    for(double d : fps) {
-        sum += d;
-        min = qMin(min, d);
-        max = qMax(max, d);
-    }
-    
-    double mean = sum / fps.size();
-    double median = fps.at(fps.size()/2);
-    
-    qDebug("Samples: %d, Min: %.2f, Max: %.2f, Mean: %.2f, Median: %.2f", fps.size(), min, max, mean, median);
-    
-    fps.clear();
-}*/

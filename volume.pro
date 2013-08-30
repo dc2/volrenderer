@@ -47,10 +47,11 @@ OTHER_FILES += \
 
 win32 {
     SOURCES += windows_compat.cpp
-    HEADERS += windows_compat.h
+    HEADERS += windows_compat.h windows_compat_glext.h
 }
 
-#DEFINES += USE_DICOM
+DEFINES += USE_DICOM
+CONFIG += USE_DICOM
 
 USE_DICOM {
     SOURCES += Formats/DicomLoader.cpp \

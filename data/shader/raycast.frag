@@ -49,7 +49,7 @@ const float specularFactor = .3, specularExponent = 40;
 /**
  * Calculate the lighting (Phong-Model) 
  */
-vec3 lighting(vec3 pos, vec3 N, vec3 color)
+vec3 lighting(vec3 pos, vec3 N)
 {
     N = normalize(N);
     
@@ -67,7 +67,7 @@ vec3 lighting(vec3 pos, vec3 N, vec3 color)
     
     float diffuse = clamp(lightNormDot, 0.0, 1.0);
     
-    return color * (light.ambient.rgb + light.diffuse.rgb * diffuse + light.specular.rgb * specular);
+    return light.ambient.rgb + light.diffuse.rgb * diffuse + light.specular.rgb * specular;
 }
 
 /**
@@ -136,7 +136,7 @@ vec3 raycast(const bool front2back)
         if(light.enabled) {
             normal = grad(pos, normal_delta);
             
-            color_sample.rgb = lighting(pos, normal, color_sample.rgb);
+            color_sample.rgb *= lighting(pos, normal);
         }
         
         if(front2back) {
